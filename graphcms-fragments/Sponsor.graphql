@@ -2,6 +2,10 @@ fragment Sponsor on Sponsor {
   stage
   remoteId: id
   createdAt
+  updatedAt
+  publishedAt
+  name
+  isPartner
   createdBy {
     ... on User {
       remoteTypeName: __typename
@@ -9,7 +13,6 @@ fragment Sponsor on Sponsor {
       stage
     }
   }
-  updatedAt
   updatedBy {
     ... on User {
       remoteTypeName: __typename
@@ -17,7 +20,6 @@ fragment Sponsor on Sponsor {
       stage
     }
   }
-  publishedAt
   publishedBy {
     ... on User {
       remoteTypeName: __typename
@@ -25,7 +27,6 @@ fragment Sponsor on Sponsor {
       stage
     }
   }
-  name
   logo {
     ... on Asset {
       remoteTypeName: __typename
@@ -34,5 +35,4 @@ fragment Sponsor on Sponsor {
       stage
     }
   }
-  isPartner
 }

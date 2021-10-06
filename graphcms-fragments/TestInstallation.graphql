@@ -2,6 +2,10 @@ fragment TestInstallation on TestInstallation {
   stage
   remoteId: id
   createdAt
+  updatedAt
+  publishedAt
+  title
+  slug
   createdBy {
     ... on User {
       remoteTypeName: __typename
@@ -9,7 +13,6 @@ fragment TestInstallation on TestInstallation {
       stage
     }
   }
-  updatedAt
   updatedBy {
     ... on User {
       remoteTypeName: __typename
@@ -17,7 +20,6 @@ fragment TestInstallation on TestInstallation {
       stage
     }
   }
-  publishedAt
   publishedBy {
     ... on User {
       remoteTypeName: __typename
@@ -25,6 +27,4 @@ fragment TestInstallation on TestInstallation {
       stage
     }
   }
-  title
-  slug
 }

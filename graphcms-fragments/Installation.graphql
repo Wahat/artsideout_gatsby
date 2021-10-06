@@ -2,29 +2,8 @@ fragment Installation on Installation {
   stage
   remoteId: id
   createdAt
-  createdBy {
-    ... on User {
-      remoteTypeName: __typename
-      remoteId: id
-      stage
-    }
-  }
   updatedAt
-  updatedBy {
-    ... on User {
-      remoteTypeName: __typename
-      remoteId: id
-      stage
-    }
-  }
   publishedAt
-  publishedBy {
-    ... on User {
-      remoteTypeName: __typename
-      remoteId: id
-      stage
-    }
-  }
   title
   description {
     ... on RichText {
@@ -34,7 +13,36 @@ fragment Installation on Installation {
       text
     }
   }
-  mediumType
+  videoUrl
+  location {
+    ... on Location {
+      latitude
+      longitude
+    }
+  }
+  locationRoom
+  slug
+  createdBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  updatedBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  publishedBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
   images {
     ... on Asset {
       remoteTypeName: __typename
@@ -51,7 +59,6 @@ fragment Installation on Installation {
       stage
     }
   }
-  videoUrl
   profiles {
     ... on Profile {
       remoteTypeName: __typename
@@ -59,6 +66,7 @@ fragment Installation on Installation {
       stage
     }
   }
+  mediumType
   project {
     ... on Project {
       remoteTypeName: __typename
@@ -66,12 +74,4 @@ fragment Installation on Installation {
       stage
     }
   }
-  location {
-    ... on Location {
-      latitude
-      longitude
-    }
-  }
-  locationRoom
-  slug
 }

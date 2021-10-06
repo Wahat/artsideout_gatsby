@@ -2,29 +2,8 @@ fragment ArtMarketVendor on ArtMarketVendor {
   stage
   remoteId: id
   createdAt
-  createdBy {
-    ... on User {
-      remoteTypeName: __typename
-      remoteId: id
-      stage
-    }
-  }
   updatedAt
-  updatedBy {
-    ... on User {
-      remoteTypeName: __typename
-      remoteId: id
-      stage
-    }
-  }
   publishedAt
-  publishedBy {
-    ... on User {
-      remoteTypeName: __typename
-      remoteId: id
-      stage
-    }
-  }
   title
   description {
     ... on RichText {
@@ -32,6 +11,27 @@ fragment ArtMarketVendor on ArtMarketVendor {
       html
       markdown
       text
+    }
+  }
+  createdBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  updatedBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  publishedBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
     }
   }
   images {

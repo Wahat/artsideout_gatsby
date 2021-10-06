@@ -3,29 +3,8 @@ fragment Asset on Asset {
   locale
   remoteId: id
   createdAt(variation: COMBINED)
-  createdBy {
-    ... on User {
-      remoteTypeName: __typename
-      remoteId: id
-      stage
-    }
-  }
   updatedAt(variation: COMBINED)
-  updatedBy {
-    ... on User {
-      remoteTypeName: __typename
-      remoteId: id
-      stage
-    }
-  }
   publishedAt(variation: COMBINED)
-  publishedBy {
-    ... on User {
-      remoteTypeName: __typename
-      remoteId: id
-      stage
-    }
-  }
   handle
   fileName
   height
@@ -33,22 +12,36 @@ fragment Asset on Asset {
   size
   mimeType
   altText
-  profileProfilePic {
-    ... on Profile {
+  createdBy {
+    ... on User {
       remoteTypeName: __typename
       remoteId: id
       stage
     }
   }
-  imagesInstallation {
-    ... on Installation {
+  updatedBy {
+    ... on User {
       remoteTypeName: __typename
       remoteId: id
       stage
     }
   }
-  imagesActivity {
-    ... on Activity {
+  publishedBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  logoSponsor {
+    ... on Sponsor {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  artMarketVendorImages {
+    ... on ArtMarketVendor {
       remoteTypeName: __typename
       remoteId: id
       stage
@@ -61,8 +54,15 @@ fragment Asset on Asset {
       stage
     }
   }
-  artMarketVendorImages {
-    ... on ArtMarketVendor {
+  profileProfilePic {
+    ... on Profile {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  imagesInstallation {
+    ... on Installation {
       remoteTypeName: __typename
       remoteId: id
       stage
@@ -82,15 +82,15 @@ fragment Asset on Asset {
       stage
     }
   }
-  filesActivity {
+  imagesActivity {
     ... on Activity {
       remoteTypeName: __typename
       remoteId: id
       stage
     }
   }
-  logoSponsor {
-    ... on Sponsor {
+  filesActivity {
+    ... on Activity {
       remoteTypeName: __typename
       remoteId: id
       stage

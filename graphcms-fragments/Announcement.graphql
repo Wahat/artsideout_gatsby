@@ -2,6 +2,10 @@ fragment Announcement on Announcement {
   stage
   remoteId: id
   createdAt
+  updatedAt
+  publishedAt
+  title
+  desc
   createdBy {
     ... on User {
       remoteTypeName: __typename
@@ -9,7 +13,6 @@ fragment Announcement on Announcement {
       stage
     }
   }
-  updatedAt
   updatedBy {
     ... on User {
       remoteTypeName: __typename
@@ -17,7 +20,6 @@ fragment Announcement on Announcement {
       stage
     }
   }
-  publishedAt
   publishedBy {
     ... on User {
       remoteTypeName: __typename
@@ -25,8 +27,6 @@ fragment Announcement on Announcement {
       stage
     }
   }
-  title
-  desc
   image {
     ... on Asset {
       remoteTypeName: __typename

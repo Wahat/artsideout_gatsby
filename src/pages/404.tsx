@@ -6,7 +6,7 @@ const NotFoundPage = () => (
   <Layout>
     <Seo title="404: Not Found" />
     <Stack spacing={3}>
-      <Heading size="4xl" fontWeight="bold" color="pink.400" textAlign="center">
+      <Heading size="4xl" fontWeight="bold" color="#E81D77" textAlign="center">
         404
       </Heading>
       <Heading size="xl" color="gray.600" textAlign="center">

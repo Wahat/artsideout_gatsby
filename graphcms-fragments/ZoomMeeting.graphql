@@ -2,6 +2,11 @@ fragment ZoomMeeting on ZoomMeeting {
   stage
   remoteId: id
   createdAt
+  updatedAt
+  publishedAt
+  meetingId
+  meetingUrl
+  meetingPass
   createdBy {
     ... on User {
       remoteTypeName: __typename
@@ -9,7 +14,6 @@ fragment ZoomMeeting on ZoomMeeting {
       stage
     }
   }
-  updatedAt
   updatedBy {
     ... on User {
       remoteTypeName: __typename
@@ -17,7 +21,6 @@ fragment ZoomMeeting on ZoomMeeting {
       stage
     }
   }
-  publishedAt
   publishedBy {
     ... on User {
       remoteTypeName: __typename
@@ -25,9 +28,6 @@ fragment ZoomMeeting on ZoomMeeting {
       stage
     }
   }
-  meetingId
-  meetingUrl
-  meetingPass
   performance {
     ... on Activity {
       remoteTypeName: __typename

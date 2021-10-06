@@ -11,6 +11,17 @@ const slugify = require(`slugify`);
 var { CreateFriendlyUrl } = require('./src/helpers');
 
 exports.createPages = async ({ graphql, actions }) => {
+
+  var fs = require('fs');
+  var dir = "/opt/build/repo/.cache/caches/gatsby-source-graphcms/"
+
+  exports.onPreBootstrap = () => {
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir);
+    }
+  }
+
+
   const result = await graphql(`
     query CreatePages {
       installation: allGraphCmsInstallation {

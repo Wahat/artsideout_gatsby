@@ -2,6 +2,16 @@ fragment AboutPage on AboutPage {
   stage
   remoteId: id
   createdAt
+  updatedAt
+  publishedAt
+  content {
+    ... on RichText {
+      raw
+      html
+      markdown
+      text
+    }
+  }
   createdBy {
     ... on User {
       remoteTypeName: __typename
@@ -9,7 +19,6 @@ fragment AboutPage on AboutPage {
       stage
     }
   }
-  updatedAt
   updatedBy {
     ... on User {
       remoteTypeName: __typename
@@ -17,7 +26,6 @@ fragment AboutPage on AboutPage {
       stage
     }
   }
-  publishedAt
   publishedBy {
     ... on User {
       remoteTypeName: __typename

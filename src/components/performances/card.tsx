@@ -4,7 +4,8 @@ import {
   Flex,
   Link,
   useColorModeValue,
-  Image
+  Image,
+  Button
 } from '@chakra-ui/react';
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -12,18 +13,20 @@ import PropTypes from 'prop-types';
 export default function Card(
   startTime: string,
   endTime: string,
-  title: string
+  title: string,
+  zoomLink: string,
+  artist: string,
+  artistLink: string,
 ) {
   return (
-    <Box mx="auto" rounded="lg" shadow="md" maxW="2xl">
+    <Box width="400px" mx="auto" rounded="lg" shadow="md" maxW="2xl">
       <Box p={6}>
         <Box>
           <chakra.span
-            mx={1}
             fontSize="sm"
             color={useColorModeValue('gray.600', 'gray.300')}
           >
-            {startTime}
+            {startTime + "-" + endTime}
           </chakra.span>
           <Link
             display="block"
@@ -38,9 +41,14 @@ export default function Card(
         </Box>
 
         <Box mt={4}>
-          <Flex alignItems="center">
-            <Link mx={2} fontWeight="bold">
-              Jone Doe
+          <Flex dir="row" alignItems="center" justify="space-between">
+            <Button>
+              <Link href={zoomLink}>
+                Join Meeting
+              </Link>
+            </Button>
+            <Link href={artistLink} fontWeight="bold">
+              {artist}
             </Link>
           </Flex>
         </Box>

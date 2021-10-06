@@ -2,7 +2,7 @@ import * as React from 'react';
 import { graphql, navigate } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
-import { SimpleGrid, Text, Heading } from '@chakra-ui/react';
+import { SimpleGrid, Text, Heading, Link, Flex } from '@chakra-ui/react';
 
 import Layout from '../components/layout';
 import Seo from '../components/seo';
@@ -20,6 +20,9 @@ const ArtistTemplate = ({ data }: PropType) => {
     navigate('/404');
     return null;
   }
+
+  console.log(data)
+
   return (
     <Layout>
       <Seo title={data.artist.name} />
@@ -27,11 +30,14 @@ const ArtistTemplate = ({ data }: PropType) => {
         as={Text}
         size="xl"
         fontWeight="bold"
-        color="pink.400"
+        color="#E81D77"
+        marginBottom="25px"
         textAlign={['center', 'center', 'left', 'left']}
       >
         {data.artist.name}
       </Heading>
+
+
 
       <Heading
         as="h2"
@@ -40,6 +46,7 @@ const ArtistTemplate = ({ data }: PropType) => {
         opacity="0.8"
         fontWeight="normal"
         lineHeight={1.5}
+        marginBottom="25px"
         textAlign={['center', 'center', 'left', 'left']}
       >
         <MDXRenderer>
@@ -47,13 +54,33 @@ const ArtistTemplate = ({ data }: PropType) => {
         </MDXRenderer>
       </Heading>
 
-      {data.artist.installations ? (
+      <Flex flexWrap="wrap">
+        <Heading
+          as={Text}
+          size="md"
+          fontWeight="bold"
+          color="#E81D77"
+          marginBottom="15px"
+          textAlign={['center', 'center', 'left', 'left']}
+        >
+          Links:
+        </Heading>
+
+        {data.artist.socialLink.map((link: any) => {
+          console.log(link)
+          return (
+            <Link target="_blank" marginLeft="15px" href={link.url}>{link.label}</Link>
+          )
+        })}
+      </Flex>
+
+      {/* {data.artist.installations ? (
         <div>
           <Heading
             as={Text}
             size="lg"
             fontWeight="bold"
-            color="pink.400"
+            color="#E81D77"
             textAlign={['center', 'center', 'left', 'left']}
           >
             Installations
@@ -72,7 +99,7 @@ const ArtistTemplate = ({ data }: PropType) => {
             )}
           </SimpleGrid>
         </div>
-      ) : null}
+      ) : null} */}
 
       {/* <SimpleGrid columns={[2, null, 3]} autoFlow="row dense">
         {data.artist.performances.images.map((image: any, i: number) => (
@@ -100,35 +127,42 @@ const ArtistTemplate = ({ data }: PropType) => {
 };
 
 export const data: any = graphql`
-  query GetProfile($id: ID) {
-    artist: graphCmsProfile(remoteId: { eq: $id }) {
-      remoteId
-      name
-      description {
-        markdownNode {
-          childMdx {
-            body
-          }
-        }
-      }
-      profileType
-      installations {
-        remoteId
-        title
-        images {
-          gatsbyImageData(width: 200, placeholder: BLURRED, quality: 20)
-          altText
-        }
-      }
-      performances {
-        remoteId
-        images {
-          gatsbyImageData(width: 200, placeholder: BLURRED, quality: 20)
-          altText
+query GetProfile($id: ID) {
+  artist: graphCmsProfile(remoteId: {eq: $id}) {
+    remoteId
+    name
+    description {
+      markdownNode {
+        childMdx {
+          body
         }
       }
     }
+    profileType
+    installations {
+      remoteId
+      title
+      images {
+        gatsbyImageData(width: 200, placeholder: BLURRED, quality: 20)
+        altText
+      }
+    }
+    performances {
+      remoteId
+      images {
+        gatsbyImageData(width: 200, placeholder: BLURRED, quality: 20)
+        altText
+      }
+    }
+    socialLink {
+      ... on GraphCMS_Link {
+        id
+        url
+        label
+      }
+    }
   }
+}
 `;
 
 ArtistTemplate.propTypes = {

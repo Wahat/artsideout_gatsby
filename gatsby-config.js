@@ -56,9 +56,16 @@ module.exports = {
       options: {
         // Your GraphCMS API endpoint. Available from your project settings.
         endpoint:
-          'https://api-us-east-1.graphcms.com/v2/ckjv3ugbcod9j01z1hvndcrdh/master',
+          // 'https://api-us-east-1.graphcms.com/v2/ckrl23npz27ng01xsbqgg6yih/master',
+          'https://api-us-east-1.graphcms.com/v2/cktyw4o6o3e9g01yu0geb5hki/master',
         downloadLocalImages: true,
         buildMarkdownNodes: true
+      }
+    },
+    {
+      resolve: `gatsby-plugin-disqus`,
+      options: {
+        shortname: `your-disqus-shortname`
       }
     },
     '@chakra-ui/gatsby-plugin',

@@ -29,7 +29,7 @@ const NavbarButton = (name: string, route: string, key: number) => (
       color={useColorModeValue('gray.700', 'gray.200')}
       _hover={{
         color: 'white',
-        bg: 'pink.400'
+        bg: '#E81D77'
       }}
     >
       {name}

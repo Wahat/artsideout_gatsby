@@ -15,7 +15,7 @@ const Hero = () => {
         backgroundSize: '100%',
         backgroundPosition: 'center'
       }}
-      height={'50vh'}
+      height={{ base: '80vh', md: "50vh", sm: "60vh" }}
     >
       <Flex
         align="center"
@@ -23,7 +23,7 @@ const Hero = () => {
         direction={{ base: 'column-reverse', md: 'row' }}
         px={8}
         mb={16}
-        height={'50vh'}
+        height={{ base: '80vh', md: "50vh" }}
       >
         <Stack
           spacing={4}
@@ -33,7 +33,7 @@ const Hero = () => {
           <Heading
             size="2xl"
             fontWeight="bold"
-            color="pink.400"
+            color="#E81D77"
             textAlign={['center', 'center', 'left', 'left']}
           >
             ARTSIDEOUT 2021: ENDURANCE
@@ -45,25 +45,14 @@ const Hero = () => {
             fontWeight="bold"
             lineHeight={1.5}
             textAlign={['center', 'center', 'left', 'left']}
+            marginBottom={"20px"}
           >
             “ENDURANCE” is the ability to resist through and recover from
             adversity.
           </Heading>
-          <GatsbyLink to="/installations">
-            <Button
-              colorScheme="primary"
-              borderRadius="8px"
-              py="4"
-              px="4"
-              lineHeight="1"
-              size="md"
-            >
-              View Installations
-            </Button>
-          </GatsbyLink>
         </Stack>
-        <Box w={{ base: '60%', sm: '50%', md: '40%' }} mb={{ base: 12, md: 0 }}>
-          <StaticImage src="../../images/aso_logo.svg" alt="" />
+        <Box mb={{ base: 12, md: 0 }}>
+          <StaticImage src="../../images/aso_logo.jpg" alt="" height={300} />
         </Box>
       </Flex>
     </Box>

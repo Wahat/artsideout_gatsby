@@ -2,6 +2,10 @@ fragment Link on Link {
   stage
   remoteId: id
   createdAt
+  updatedAt
+  publishedAt
+  url
+  label
   createdBy {
     ... on User {
       remoteTypeName: __typename
@@ -9,7 +13,6 @@ fragment Link on Link {
       stage
     }
   }
-  updatedAt
   updatedBy {
     ... on User {
       remoteTypeName: __typename
@@ -17,7 +20,6 @@ fragment Link on Link {
       stage
     }
   }
-  publishedAt
   publishedBy {
     ... on User {
       remoteTypeName: __typename
@@ -25,11 +27,16 @@ fragment Link on Link {
       stage
     }
   }
-  url
-  label
   type
   artMarketVendor {
     ... on ArtMarketVendor {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  profile {
+    ... on Profile {
       remoteTypeName: __typename
       remoteId: id
       stage

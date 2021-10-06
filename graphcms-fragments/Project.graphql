@@ -2,29 +2,8 @@ fragment Project on Project {
   stage
   remoteId: id
   createdAt
-  createdBy {
-    ... on User {
-      remoteTypeName: __typename
-      remoteId: id
-      stage
-    }
-  }
   updatedAt
-  updatedBy {
-    ... on User {
-      remoteTypeName: __typename
-      remoteId: id
-      stage
-    }
-  }
   publishedAt
-  publishedBy {
-    ... on User {
-      remoteTypeName: __typename
-      remoteId: id
-      stage
-    }
-  }
   title
   description {
     ... on RichText {
@@ -34,7 +13,27 @@ fragment Project on Project {
       text
     }
   }
-  projectType
+  createdBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  updatedBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  publishedBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
   displayImage {
     ... on Asset {
       remoteTypeName: __typename
@@ -43,6 +42,14 @@ fragment Project on Project {
       stage
     }
   }
+  profiles {
+    ... on Profile {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  projectType
   elements {
     ... on Activity {
       remoteTypeName: __typename
@@ -50,13 +57,6 @@ fragment Project on Project {
       stage
     }
     ... on Installation {
-      remoteTypeName: __typename
-      remoteId: id
-      stage
-    }
-  }
-  profiles {
-    ... on Profile {
       remoteTypeName: __typename
       remoteId: id
       stage

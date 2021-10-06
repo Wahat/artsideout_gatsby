@@ -11,7 +11,8 @@ import {
   Divider,
   Box,
   Grid,
-  GridItem
+  GridItem,
+  Link
 } from '@chakra-ui/react';
 import ImageGallery from 'react-image-gallery';
 import 'react-image-gallery/styles/css/image-gallery.css';
@@ -20,6 +21,8 @@ import Layout from '../components/layout';
 import Seo from '../components/seo';
 import PropTypes from 'prop-types';
 import { InstallationData } from '../types/PrimaryTypes';
+import ReactDisqusComments from 'react-disqus-comments';
+import { CreateFriendlyUrl } from '../helpers';
 
 // const images = [
 //   {
@@ -59,32 +62,41 @@ const InstallationTemplate = ({ data }: PropType) => {
   return (
     <Layout>
       <Seo title={data.installation.title} />
+      <Heading
+        as={Text}
+        size="xl"
+        fontWeight="bold"
+        color="#E81D77"
+        textAlign={['center', 'center', 'left', 'left']}
+      >
+        {data.installation.title}
+      </Heading>
+
+      <Heading
+        as={Text}
+        size="xl"
+        fontWeight="bold"
+        color="#E81D77"
+        textAlign={['center', 'center', 'left', 'left']}
+      >
+        By <Link target="_blank" href={`/artist/${CreateFriendlyUrl(data.installation.profiles[0].name, data.installation.profiles[0].remoteId)}`}>{data.installation.profiles[0].name}</Link>
+      </Heading>
+
 
       <Grid
-        h="200px"
         templateRows="repeat(2, 1fr)"
         templateColumns="repeat(4, 1fr)"
         gap={4}
       >
-        <GridItem rowSpan={2} colSpan={2} bg="tomato">
+        <GridItem rowSpan={2} colSpan={2}>
           {images.length !== 0 ? (
             <ImageGallery items={images} showIndex={true} lazyLoad={true} />
           ) : null}
         </GridItem>
-        <GridItem colSpan={2}>
-          <Heading
-            as={Text}
-            size="xl"
-            fontWeight="bold"
-            color="pink.400"
-            textAlign={['center', 'center', 'left', 'left']}
-          >
-            {data.installation.title}
-          </Heading>
-        </GridItem>
+
         <GridItem colSpan={2}>
           <Box>
-            <Stack direction="row" h="100px" p={4}>
+            <Stack direction="column" p={4}>
               <Divider orientation="vertical" />
               <MDXRenderer>
                 {data.installation.description.markdownNode.childMdx.body}
@@ -98,24 +110,28 @@ const InstallationTemplate = ({ data }: PropType) => {
 };
 
 export const data: any = graphql`
-  query GetInstallation($id: ID) {
-    installation: graphCmsInstallation(remoteId: { eq: $id }) {
-      remoteId
-      title
-      images {
-        gatsbyImageData(width: 300, placeholder: BLURRED, quality: 70)
-        altText
-        url
-      }
-      description {
-        markdownNode {
-          childMdx {
-            body
-          }
+query GetInstallation($id: ID) {
+  installation: graphCmsInstallation(remoteId: {eq: $id}) {
+    remoteId
+    title
+    images {
+      gatsbyImageData(width: 300, placeholder: BLURRED, quality: 70)
+      altText
+      url
+    }
+    description {
+      markdownNode {
+        childMdx {
+          body
         }
       }
     }
+    profiles {
+      name
+      remoteId
+    }
   }
+}
 `;
 
 InstallationTemplate.propTypes = {

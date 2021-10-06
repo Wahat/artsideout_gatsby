@@ -15,6 +15,7 @@ export interface InstallationData {
 }
 
 export interface ProfileData {
+  socialLink: any;
   name: string;
   description: {
     markdownNode: {
@@ -23,6 +24,7 @@ export interface ProfileData {
       };
     };
   };
+  remoteId: string;
   profileType: [];
   image: ImageData[];
   installations: InstallationData[];

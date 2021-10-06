@@ -2,29 +2,8 @@ fragment Activity on Activity {
   stage
   remoteId: id
   createdAt
-  createdBy {
-    ... on User {
-      remoteTypeName: __typename
-      remoteId: id
-      stage
-    }
-  }
   updatedAt
-  updatedBy {
-    ... on User {
-      remoteTypeName: __typename
-      remoteId: id
-      stage
-    }
-  }
   publishedAt
-  publishedBy {
-    ... on User {
-      remoteTypeName: __typename
-      remoteId: id
-      stage
-    }
-  }
   title
   description {
     ... on RichText {
@@ -34,8 +13,38 @@ fragment Activity on Activity {
       text
     }
   }
-  performanceType
   featured
+  videoUrl
+  startTime
+  endTime
+  location {
+    ... on Location {
+      latitude
+      longitude
+    }
+  }
+  locationRoom
+  createdBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  updatedBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  publishedBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
   images {
     ... on Asset {
       remoteTypeName: __typename
@@ -59,9 +68,6 @@ fragment Activity on Activity {
       stage
     }
   }
-  videoUrl
-  startTime
-  endTime
   zoomMeeting {
     ... on ZoomMeeting {
       remoteTypeName: __typename
@@ -69,6 +75,7 @@ fragment Activity on Activity {
       stage
     }
   }
+  performanceType
   project {
     ... on Project {
       remoteTypeName: __typename
@@ -76,11 +83,4 @@ fragment Activity on Activity {
       stage
     }
   }
-  location {
-    ... on Location {
-      latitude
-      longitude
-    }
-  }
-  locationRoom
 }
